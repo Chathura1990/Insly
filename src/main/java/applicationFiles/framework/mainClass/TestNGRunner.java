@@ -34,7 +34,7 @@ public class TestNGRunner {
                 jarDir = (pathToJarFile.getAbsolutePath()).substring(0,
                         (pathToJarFile.getAbsolutePath()).lastIndexOf(File.separator));
                 if ((jarDir != null) && (new File(jarDir)).exists() && (new File(jarDir)).isDirectory()) {
-                    pathToTestsSuiteFile = jarDir + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "testcases.xml";
+                    pathToTestsSuiteFile = jarDir + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "suite1.xml";
                     pathToLog4jConfigFile = jarDir + File.separator + ".." + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "log4j.properties";
                 }
             } catch (SecurityException se) {
@@ -54,7 +54,7 @@ public class TestNGRunner {
 
         Path currentRelativePath2 = Paths.get("");//getting current path
         String path2 = currentRelativePath2.toAbsolutePath().toString();
-        testNG.setTestSuites(Arrays.asList(path2 + "/src/main/resources/testcases.xml"));
+        testNG.setTestSuites(Arrays.asList(path2 + "/src/main/resources/suite1.xml"));
         return testNG;
     }
 

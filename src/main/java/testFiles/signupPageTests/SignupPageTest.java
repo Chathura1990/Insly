@@ -31,9 +31,5 @@ public class SignupPageTest extends TestBase {
         app.getSignupPage().clickCheckBoxesAndReadPrivacyPolicy();
         app.getSignupPage().clickSignupButton();
         app.getSignupPage().checkFinalResultLink();
-
-
     }
-
-
 }
