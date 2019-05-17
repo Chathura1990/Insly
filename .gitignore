@@ -1,0 +1,6 @@
+/target/
+/Report/
+/src/main/resources/driver/
+*.log
+chromedriver.exe
+.idea
