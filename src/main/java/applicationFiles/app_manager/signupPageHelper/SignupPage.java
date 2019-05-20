@@ -2,6 +2,7 @@ package applicationFiles.app_manager.signupPageHelper;
 
 import applicationFiles.app_manager.model_data.SignupPageData;
 import applicationFiles.app_manager.selector_helper.SelectorService;
+import applicationFiles.framework.mainClass.Parameters;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -150,7 +151,7 @@ public class SignupPage extends SelectorService {
             click(SIGHN_UP_BUTTON,"[SIGN UP] button");
             sleep(MILLISEC2000);
             if(driver.getCurrentUrl().endsWith("success")){
-                assertEquals(driver.getCurrentUrl(),"https://signup.int.staging.insly.training/signup/success");
+                assertEquals(driver.getCurrentUrl(), Parameters.instance().getUrl()+"signup/success");
                 reportLog("Completely submitted your sign up request.");
             }else{
                 reportLog("SOMETHING WENT WRONG.");
