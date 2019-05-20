@@ -139,7 +139,7 @@ public class SelectorService {
 
     public void checkAnchorTagLinkStatus(By locator, String value) throws IOException {
         WebElement link = driver.findElement(locator);
-        HttpURLConnection connection = (HttpURLConnection) new URL(link.getAttribute("href")).openConnection();
+        HttpURLConnection connection = (HttpURLConnection) new URL(link.getAttribute(value)).openConnection();
         connection.setConnectTimeout(LONG_WAIT);
         connection.setInstanceFollowRedirects( false );
         connection.connect();
