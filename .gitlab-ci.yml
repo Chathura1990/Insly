@@ -138,8 +138,7 @@ build:jar:
     only:
         - branches
     tags:
-        - docker
-        - by17-ci2
+        - shared-runners-manager-4.gitlab.com
 
 run:test:2.42:
     <<: *run_env_template
