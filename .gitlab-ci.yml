@@ -138,6 +138,7 @@ build:jar:
     only:
         - branches
     tags:
+        - docker
         - shared-runners-manager-4.gitlab.com
 
 run:test:2.42:
