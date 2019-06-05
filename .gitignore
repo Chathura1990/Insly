@@ -1,6 +1,5 @@
-/target/
+# Created by .ignore support plugin (hsz.mobi)
+/.idea/
 /Report/
+/test-output/
 /src/main/resources/driver/
-*.log
-chromedriver.exe
-.idea
