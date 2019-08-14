@@ -9,6 +9,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Reporter;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -26,6 +28,8 @@ public class ApplicationManager {
     public static Logger log = Logger.getLogger(ApplicationManager.class.getName());
     private SignupPage signupPage;
     private SelectorService selectors;
+    private Path currentRelativePath = Paths.get("");//getting current path
+    private String path1 = currentRelativePath.toAbsolutePath().toString();
 
     public void init() {
         /*
@@ -51,7 +55,7 @@ public class ApplicationManager {
         if (OS.startsWith("windows")) {
             System.setProperty("webdriver.chrome.driver", Parameters.instance().getChromeDriverWin());
         } else if (OS.startsWith("linux")) {
-            System.setProperty("webdriver.chrome.driver", "/usr/bin/chromedriver");
+            System.setProperty("webdriver.chrome.driver", path1+"/usr/bin/chromedriver");
             if (Parameters.instance().getHeadless().toLowerCase().equals("true")) {
                 chromeOptions.addArguments("--headless");
             }
