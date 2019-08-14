@@ -54,16 +54,12 @@ public class ApplicationManager {
             System.setProperty("webdriver.chrome.driver", Parameters.instance().getChromeDriverWin());
         } else if (OS.startsWith("linux")) {
             System.setProperty("webdriver.chrome.driver", "/usr/bin/chromedriver");
-            if (Parameters.instance().getHeadless().toLowerCase().equals("true")) {
                 chromeOptions.addArguments("--headless");
-            }
         }
         // Set max. dimensions of the browser window
         chromeOptions.addArguments("window-size=1920,1080");
 
         driver = new ChromeDriver(chromeOptions);
-
-        System.out.println(OS.toLowerCase());
 
         long start = System.currentTimeMillis();
         driver.get(Parameters.instance().getUrl()); //Opening the Staging site https://signup.int.staging.insly.training/
