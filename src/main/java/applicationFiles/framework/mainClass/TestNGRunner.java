@@ -48,13 +48,13 @@ public class TestNGRunner {
             System.exit(127);
         }
 
-        Path currentRelativePath = Paths.get("");//getting current path
-        String path1 = currentRelativePath.toAbsolutePath().toString();
-        PropertyConfigurator.configureAndWatch(path1 + "/src/main/resources/log4j.properties");
-
-        Path currentRelativePath2 = Paths.get("");//getting current path
-        String path2 = currentRelativePath2.toAbsolutePath().toString();
-        testNG.setTestSuites(Arrays.asList(path2 + "/src/main/resources/suite1.xml"));
+//        Path currentRelativePath = Paths.get("");//getting current path
+//        String path1 = currentRelativePath.toAbsolutePath().toString();
+//        PropertyConfigurator.configureAndWatch(path1 + "/src/main/resources/log4j.properties");
+//
+//        Path currentRelativePath2 = Paths.get("");//getting current path
+//        String path2 = currentRelativePath2.toAbsolutePath().toString();
+//        testNG.setTestSuites(Arrays.asList(path2 + "/src/main/resources/suite1.xml"));
         return testNG;
     }
 
