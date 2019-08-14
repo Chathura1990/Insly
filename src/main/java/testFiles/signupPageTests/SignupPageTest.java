@@ -2,7 +2,6 @@ package testFiles.signupPageTests;
 
 import applicationFiles.app_manager.model_data.SignupPageData;
 import applicationFiles.app_manager.test_base.TestBase;
-import org.apache.commons.lang3.RandomStringUtils;
 import org.testng.annotations.Test;
 
 import static applicationFiles.app_manager.ApplicationManager.log;
