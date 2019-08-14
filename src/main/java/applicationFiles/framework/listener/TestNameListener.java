@@ -18,11 +18,13 @@ import static applicationFiles.app_manager.ApplicationManager.*;
 public class TestNameListener extends TestListenerAdapter{
 
 
+    private String OS = System.getProperty("os.name").toLowerCase();
     @Override
     public void onStart(ITestContext tr){
         super.onStart(tr);
         log.info("");
         reportLog("[TEST STARTED] - " + tr.getName());
+        reportLog(OS.toLowerCase());
         log.info("");
     }
 
