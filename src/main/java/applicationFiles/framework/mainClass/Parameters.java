@@ -3,12 +3,18 @@ package applicationFiles.framework.mainClass;
 import applicationFiles.framework.global_parameters.GlobalParameters;
 import com.beust.jcommander.Parameter;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 public class Parameters {
 
     private static Parameters instance;
 
+    private Path currentRelativePath = Paths.get("");//getting current path
+    private String path1 = currentRelativePath.toAbsolutePath().toString();
+
     @Parameter(names = {"--chromeLin", "-c"}, description = "Path to Google Chrome Driver")
-    private String chromeDriverLin = "/src/main/resources/driver/chromedriver";
+    private String chromeDriverLin = path1+"/src/main/resources/driver/chromedriver";
 
     @Parameter(names = {"--chromeWin", "-w"}, description = "Path to Google Chrome Driver")
     private String chromeDriverWin = "./src/main/resources/driver/chromedriver.exe";
