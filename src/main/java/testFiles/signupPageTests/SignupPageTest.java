@@ -15,7 +15,7 @@ public class SignupPageTest extends TestBase {
     @Test(priority = 1)
     public void completeSignupPage() throws InterruptedException {
         log.info("");
-        reportLog("****** Fill Company Block *****");
+        reportLog("****** Fill Company Block. *****");
         app.getSignupPage().getPageTitle();
         app.getSignupPage().checkPageHeader();
         app.getSignupPage().fillCompanyBlockForm(spd.setCompanyName(RandomStringUtils.randomAlphabetic(6,10)));
