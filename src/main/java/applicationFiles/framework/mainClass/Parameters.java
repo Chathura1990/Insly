@@ -8,7 +8,7 @@ public class Parameters {
     private static Parameters instance;
 
     @Parameter(names = {"--chromeLin", "-c"}, description = "Path to Google Chrome Driver")
-    private String chromeDriverLin = "./src/main/resources/driver/chromedriver";
+    private String chromeDriverLin = "/src/main/resources/driver/chromedriver";
 
     @Parameter(names = {"--chromeWin", "-w"}, description = "Path to Google Chrome Driver")
     private String chromeDriverWin = "./src/main/resources/driver/chromedriver.exe";
