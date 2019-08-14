@@ -9,8 +9,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Reporter;
 
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -90,6 +88,4 @@ public class ApplicationManager {
     }
 
     public SignupPage getSignupPage(){ return signupPage; }
-
-    public SelectorService getSelectors(){ return selectors; }
 }
