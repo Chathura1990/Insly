@@ -19,12 +19,18 @@
                     <source>1.8</source>
                     <target>1.8</target>
                 </configuration>
-                <goals>
-                    <goal>testCompile</goal>
-                </goals>
             </plugin>
 
-
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.19.1</version>
+                <configuration>
+                     <suiteXmlFiles>
+                        <suiteXmlFile>src/main/resources/suite1.xml</suiteXmlFile>
+                    </suiteXmlFiles>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-assembly-plugin</artifactId>
