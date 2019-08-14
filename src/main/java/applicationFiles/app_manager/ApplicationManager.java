@@ -61,6 +61,8 @@ public class ApplicationManager {
 
         driver = new ChromeDriver(chromeOptions);
 
+        System.out.println(OS.toLowerCase());
+
         long start = System.currentTimeMillis();
         driver.get(Parameters.instance().getUrl()); //Opening the Staging site https://signup.int.staging.insly.training/
         driver.manage().timeouts().pageLoadTimeout(PAGE_LOAD_TIMEOUT, TimeUnit.MILLISECONDS);
