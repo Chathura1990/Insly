@@ -51,7 +51,7 @@ public class ApplicationManager {
         if (OS.startsWith("windows")) {
             System.setProperty("webdriver.chrome.driver", Parameters.instance().getChromeDriverWin());
         } else if (OS.startsWith("linux")) {
-            System.setProperty("webdriver.chrome.driver", Parameters.instance().getChromeDriverLin());
+            System.setProperty("webdriver.chrome.driver", "/usr/bin/chromedriver");
             if (Parameters.instance().getHeadless().toLowerCase().equals("true")) {
                 chromeOptions.addArguments("--headless");
             }
