@@ -17,6 +17,5 @@ public class SignupPageTest extends TestBase {
         log.info("");
         reportLog("****** Fill Company Block. *****");
         app.getSignupPage().getPageTitle();
-        app.getSignupPage().checkPageHeader();
     }
 }

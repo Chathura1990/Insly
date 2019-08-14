@@ -2,7 +2,7 @@ package applicationFiles.framework.global_parameters;
 
 public class GlobalParameters {
 
-    public static final String websiteURL = "https://signup.int.staging.insly.training/";
+    public static final String websiteURL = "https://www.google.com/";
 
     //Page load waits
     public static int MILLISEC1000 = 1000;
