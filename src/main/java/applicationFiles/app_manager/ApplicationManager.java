@@ -43,7 +43,7 @@ public class ApplicationManager {
         // Disables the use of a zygote process for forking child processes. Instead, child processes will be forked and
         // exec'd directly. Note that --no-sandbox should also be used together with this flag because the sandbox needs the
         // zygote to work.
-        chromeOptions.addArguments("start-maximized");
+//        chromeOptions.addArguments("start-maximized");
         chromeOptions.addArguments("--no-zygote");
         // Overcome limited resource problems
         chromeOptions.addArguments("--disable-dev-shm-usage");
@@ -55,7 +55,7 @@ public class ApplicationManager {
                 chromeOptions.addArguments("--headless");
         }
         // Set max. dimensions of the browser window
-//        chromeOptions.addArguments("window-size=1920,1080");
+        chromeOptions.addArguments("window-size=1920,1080");
 
         driver = new ChromeDriver(chromeOptions);
 
