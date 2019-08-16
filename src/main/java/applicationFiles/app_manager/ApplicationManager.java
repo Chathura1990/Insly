@@ -31,6 +31,7 @@ public class ApplicationManager {
          */
         ChromeOptions chromeOptions = new ChromeOptions();
         // Prevent infobars from appearing.
+        chromeOptions.addArguments("--disable-features=VizDisplayCompositor");
         chromeOptions.addArguments("--disable-infobars");
         // Disable extensions.
         chromeOptions.addArguments("--disable-extensions");
