@@ -53,7 +53,6 @@ public class ApplicationManager {
         } else if (OS.startsWith("linux")) {
             System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver");
                 chromeOptions.addArguments("--headless");
-                chromeOptions.setHeadless(true);
         }
         // Set max. dimensions of the browser window
         chromeOptions.addArguments("window-size=1920,1080");
