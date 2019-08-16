@@ -63,8 +63,8 @@ public class ApplicationManager {
         sleep(1000);
 
         log.info("");
-        reportLog("****** Fill Company Block. *****");
-        reportLog("Sites Expected Title--> " + driver.getTitle());
+        reportLog("Hello Salesforce!");
+        reportLog("This is a test project for Salesforce/Flosum");
     }
 
     @AfterTest
