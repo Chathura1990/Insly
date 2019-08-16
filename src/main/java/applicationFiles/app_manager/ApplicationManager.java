@@ -25,7 +25,7 @@ public class ApplicationManager {
     public static Logger log = Logger.getLogger(ApplicationManager.class.getName());
 
     @Test(priority = 1)
-    public void init() {
+    public void init() throws InterruptedException {
         /*
          * open browser (GoogleChrome) and enter user credentials
          */
@@ -53,20 +53,15 @@ public class ApplicationManager {
         } else if (OS.startsWith("linux")) {
             System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver");
                 chromeOptions.addArguments("--headless");
+                chromeOptions.setHeadless(true);
         }
         // Set max. dimensions of the browser window
         chromeOptions.addArguments("window-size=1920,1080");
 
         driver = new ChromeDriver(chromeOptions);
 
-        long start = System.currentTimeMillis();
         driver.get("https://www.google.com/");
-        driver.manage().timeouts().pageLoadTimeout(2000, TimeUnit.MILLISECONDS);
-        long finish = System.currentTimeMillis();
-        long totalTimeInMillis = finish - start;
-        double seconds = (totalTimeInMillis / 1000.0) % 60;
-        double minutes = (double) ((totalTimeInMillis / (1000 * 60)) % 60);
-        reportLog("Total time to load the page -> " + "milliseconds: " + totalTimeInMillis + " minutes:" + minutes + " seconds:" + seconds);
+        sleep(1000);
 
         log.info("");
         reportLog("****** Fill Company Block. *****");
