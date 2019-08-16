@@ -1,20 +1,19 @@
 package applicationFiles.app_manager;
 
-import applicationFiles.app_manager.selector_helper.SelectorService;
-import applicationFiles.app_manager.signupPageHelper.SignupPage;
 import applicationFiles.framework.mainClass.Parameters;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Reporter;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.Test;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
-import static applicationFiles.framework.global_parameters.GlobalParameters.*;
 import static java.lang.Thread.sleep;
 
 public class ApplicationManager {
@@ -24,9 +23,8 @@ public class ApplicationManager {
     private static final DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
     private String OS = System.getProperty("os.name").toLowerCase();
     public static Logger log = Logger.getLogger(ApplicationManager.class.getName());
-    private SignupPage signupPage;
-    private SelectorService selectors;
 
+    @Test(priority = 1)
     public void init() {
         /*
          * open browser (GoogleChrome) and enter user credentials
@@ -44,6 +42,7 @@ public class ApplicationManager {
         // Disables the use of a zygote process for forking child processes. Instead, child processes will be forked and
         // exec'd directly. Note that --no-sandbox should also be used together with this flag because the sandbox needs the
         // zygote to work.
+        chromeOptions.addArguments("start-maximized");
         chromeOptions.addArguments("--no-zygote");
         // Overcome limited resource problems
         chromeOptions.addArguments("--disable-dev-shm-usage");
@@ -55,37 +54,38 @@ public class ApplicationManager {
                 chromeOptions.addArguments("--headless");
         }
         // Set max. dimensions of the browser window
-        chromeOptions.addArguments("window-size=1920,1080");
+//        chromeOptions.addArguments("window-size=1920,1080");
 
         driver = new ChromeDriver(chromeOptions);
 
         long start = System.currentTimeMillis();
-        driver.get(Parameters.instance().getUrl());
-        driver.manage().timeouts().pageLoadTimeout(PAGE_LOAD_TIMEOUT, TimeUnit.MILLISECONDS);
+        driver.get("https://www.google.com/");
+        driver.manage().timeouts().pageLoadTimeout(2000, TimeUnit.MILLISECONDS);
         long finish = System.currentTimeMillis();
         long totalTimeInMillis = finish - start;
         double seconds = (totalTimeInMillis / 1000.0) % 60;
         double minutes = (double) ((totalTimeInMillis / (1000 * 60)) % 60);
         reportLog("Total time to load the page -> " + "milliseconds: " + totalTimeInMillis + " minutes:" + minutes + " seconds:" + seconds);
-        signupPage = new SignupPage(driver);
-        selectors = new SelectorService(driver);
+
+        log.info("");
+        reportLog("****** Fill Company Block. *****");
+        String title = driver.getTitle();
+        reportLog("Sites Expected Title--> " +title);
     }
 
+    @AfterTest
     public void stop() throws InterruptedException {
-        sleep(LONG_WAIT);
+        sleep(4000);
         driver.quit();
     }
 
     //Method for adding logs passed from test cases
-    public static String reportLog(String message) {
+    public static void reportLog(String message) {
         if (DEBUG) {
             Reporter.setEscapeHtml(false);
             Date date = new Date();
             log.info("-- " + message);
             Reporter.log(dateFormat.format(date) + " /" + " " + message);
         }
-        return message;
     }
-
-    public SignupPage getSignupPage(){ return signupPage; }
 }

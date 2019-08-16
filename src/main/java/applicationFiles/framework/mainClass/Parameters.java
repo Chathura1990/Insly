@@ -1,6 +1,5 @@
 package applicationFiles.framework.mainClass;
 
-import applicationFiles.framework.global_parameters.GlobalParameters;
 import com.beust.jcommander.Parameter;
 
 import java.nio.file.Path;
@@ -22,9 +21,6 @@ public class Parameters {
     @Parameter(names = "--help", help = true, description = "How to use")
     private boolean help;
 
-    @Parameter(names = {"--url", "-u"}, description = "URL")
-    private String url = GlobalParameters.websiteURL;
-
     @Parameter(names = "--headless", description = "If flag set to 'true' Browser will be started in headless mode (required for running on server)")
     private String headless = "false";
 
@@ -35,20 +31,12 @@ public class Parameters {
         return instance;
     }
 
-    public String getChromeDriverLin() {
-        return chromeDriverLin;
-    }
-
     public String getChromeDriverWin() {
         return chromeDriverWin;
     }
 
     public boolean isHelp() {
         return help;
-    }
-
-    public String getUrl() {
-        return url;
     }
 
     public String getHeadless() {
