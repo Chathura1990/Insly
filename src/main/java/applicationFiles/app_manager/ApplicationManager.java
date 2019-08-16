@@ -70,8 +70,7 @@ public class ApplicationManager {
 
         log.info("");
         reportLog("****** Fill Company Block. *****");
-        String title = driver.getTitle();
-        reportLog("Sites Expected Title--> " +title);
+        reportLog("Sites Expected Title--> " + driver.getTitle());
     }
 
     @AfterTest
