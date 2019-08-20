@@ -3,17 +3,17 @@ package applicationFiles.app_manager;
 import applicationFiles.framework.mainClass.Parameters;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.Reporter;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
-
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.concurrent.TimeUnit;
 
 import static java.lang.Thread.sleep;
 
@@ -62,6 +62,8 @@ public class ApplicationManager {
 
         driver.get("https://www.google.com/");
         driver.findElement(By.xpath("//*[@id=\"tsf\"]/div[2]/div/div[1]/div/div[1]/input")).sendKeys("hi");
+        driver.findElement(By.xpath("//*[@id=\"fbar\"]/div/div/div")).click();
+        sleep(1000);
         driver.findElement(By.xpath("//*[@id=\"tsf\"]/div[2]/div/div[3]/center/input[1]")).click();
         sleep(1000);
 

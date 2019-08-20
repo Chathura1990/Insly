@@ -2,28 +2,22 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
     <line>
-      <![CDATA[17:20:32 / Hello Salesforce!]]>
-    </line>
-    <line>
-      <![CDATA[17:20:32 / This is a test project for Salesforce/Flosum]]>
+      <![CDATA[14:08:37 / hi - Пошук Google]]>
     </line>
   </reporter-output>
-  <suite started-at="2019-08-16T14:20:25Z" name="Default Suite" finished-at="2019-08-16T14:20:36Z" duration-ms="11245">
+  <suite started-at="2019-08-20T11:08:30Z" name="Default Suite" finished-at="2019-08-20T11:08:42Z" duration-ms="11743">
     <groups>
     </groups>
-    <test started-at="2019-08-16T14:20:25Z" name="Salesforce" finished-at="2019-08-16T14:20:36Z" duration-ms="11245">
+    <test started-at="2019-08-20T11:08:30Z" name="Salesforce" finished-at="2019-08-20T11:08:42Z" duration-ms="11743">
       <class name="applicationFiles.app_manager.ApplicationManager">
-        <test-method signature="init()[pri:1, instance:applicationFiles.app_manager.ApplicationManager@37ceb1df]" started-at="2019-08-16T14:20:25Z" name="init" finished-at="2019-08-16T14:20:32Z" duration-ms="6525" status="PASS">
+        <test-method signature="init()[pri:1, instance:applicationFiles.app_manager.ApplicationManager@49e5f737]" started-at="2019-08-20T11:08:30Z" name="init" finished-at="2019-08-20T11:08:37Z" duration-ms="6922" status="PASS">
           <reporter-output>
             <line>
-              <![CDATA[17:20:32 / Hello Salesforce!]]>
-            </line>
-            <line>
-              <![CDATA[17:20:32 / This is a test project for Salesforce/Flosum]]>
+              <![CDATA[14:08:37 / hi - Пошук Google]]>
             </line>
           </reporter-output>
         </test-method> <!-- init -->
-        <test-method is-config="true" signature="stop()[pri:0, instance:applicationFiles.app_manager.ApplicationManager@37ceb1df]" started-at="2019-08-16T14:20:32Z" name="stop" finished-at="2019-08-16T14:20:36Z" duration-ms="4664" status="PASS">
+        <test-method is-config="true" signature="stop()[pri:0, instance:applicationFiles.app_manager.ApplicationManager@49e5f737]" started-at="2019-08-20T11:08:37Z" name="stop" finished-at="2019-08-20T11:08:42Z" duration-ms="4786" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- stop -->
