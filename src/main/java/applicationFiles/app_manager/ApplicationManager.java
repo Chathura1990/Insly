@@ -66,6 +66,7 @@ public class ApplicationManager {
         sleep(1000);
         driver.findElement(By.xpath("//*[@id=\"tsf\"]/div[2]/div/div[3]/center/input[1]")).click();
         sleep(1000);
+        reportLog(OS.toLowerCase());
 
         reportLog(driver.getTitle());
 
