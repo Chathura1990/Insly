@@ -2,6 +2,7 @@ package applicationFiles.app_manager;
 
 import applicationFiles.framework.mainClass.Parameters;
 import org.apache.log4j.Logger;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -60,11 +61,12 @@ public class ApplicationManager {
         driver = new ChromeDriver(chromeOptions);
 
         driver.get("https://www.google.com/");
+        driver.findElement(By.xpath("//*[@id=\"tsf\"]/div[2]/div/div[1]/div/div[1]/input")).sendKeys("hi");
+        driver.findElement(By.xpath("//*[@id=\"tsf\"]/div[2]/div/div[3]/center/input[1]")).click();
         sleep(1000);
 
-        log.info("");
-        reportLog("Hello Salesforce!");
-        reportLog("This is a test project for Salesforce/Flosum");
+        reportLog(driver.getTitle());
+
     }
 
     @AfterTest
