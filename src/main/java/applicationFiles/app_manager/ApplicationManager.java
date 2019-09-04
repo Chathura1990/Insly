@@ -61,11 +61,13 @@ public class ApplicationManager {
         driver = new ChromeDriver(chromeOptions);
 
         driver.get("https://www.google.com/");
-        driver.findElement(By.xpath("//*[@id=\"tsf\"]/div[2]/div/div[1]/div/div[1]/input")).sendKeys("hi");
-        driver.findElement(By.xpath("//*[@id=\"fbar\"]/div/div/div")).click();
-        sleep(1000);
-        driver.findElement(By.xpath("//*[@id=\"tsf\"]/div[2]/div/div[3]/center/input[1]")).click();
-        sleep(1000);
+
+        if (driver.getPageSource().contains("I'm Feeling Lucky")) {
+            System.out.println("Pass");
+        } else {
+            System.out.println("Fail");
+        }
+        
         reportLog(OS.toLowerCase());
 
         reportLog(driver.getTitle());
