@@ -63,9 +63,9 @@ public class ApplicationManager {
         driver.get("https://www.google.com/");
 
         if (driver.getPageSource().contains("I'm Feeling Lucky")) {
-            System.out.println("Pass");
+            reportLog("Pass");
         } else {
-            System.out.println("Fail");
+            reportLog("Fail");
         }
         
         reportLog(OS.toLowerCase());
