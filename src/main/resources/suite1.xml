@@ -9,7 +9,7 @@
 
     <test name="Signup page Verification Test">
         <classes>
-            <class name="applicationFiles.app_manager.ApplicationManager"/>
+            <class name="applicationFiles.testFiles.createLead.CreateLeadTest"/>
         </classes>
     </test><!-- Test 1-->
 
