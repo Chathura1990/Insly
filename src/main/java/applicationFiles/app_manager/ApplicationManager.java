@@ -1,20 +1,23 @@
 package applicationFiles.app_manager;
 
-import applicationFiles.framework.mainClass.Parameters;
+import applicationFiles.app_manager.navigationHelper.MainPages;
+import applicationFiles.app_manager.salesforcePageHelper.LeadsPage;
+import applicationFiles.app_manager.selectorHelper.SelectorService;
+import applicationFiles.app_manager.testBase.SessionHelper;
+import applicationFiles.framework.globalParameters.Parameters;
 import org.apache.log4j.Logger;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.interactions.Actions;
 import org.testng.Reporter;
 import org.testng.annotations.AfterTest;
-import org.testng.annotations.Test;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
+import static applicationFiles.framework.globalParameters.GlobalParameters.*;
 import static java.lang.Thread.sleep;
 
 public class ApplicationManager {
@@ -25,8 +28,11 @@ public class ApplicationManager {
     private String OS = System.getProperty("os.name").toLowerCase();
     public static Logger log = Logger.getLogger(ApplicationManager.class.getName());
 
-    @Test(priority = 1)
-    public void init() throws InterruptedException {
+    private SelectorService selectorService;
+    private MainPages mainPages;
+    private LeadsPage leadsPage;
+
+    public void init() {
         /*
          * open browser (GoogleChrome) and enter user credentials
          */
@@ -38,7 +44,7 @@ public class ApplicationManager {
         chromeOptions.addArguments("--disable-extensions");
         // Disables GPU hardware acceleration. If software renderer is not in place, then the GPU process won't launch.
         chromeOptions.addArguments("--disable-gpu");
-        // Disables the sandbox for all process types that are normally sandboxed (bypass OS security model_data) - this is
+        // Disables the sandbox for all process types that are normally sandboxed (bypass OS security modelData) - this is
         // necessary within the Docker environment otherwise you will get "NoSuchSession" exception
         chromeOptions.addArguments("--no-sandbox");
         // Disables the use of a zygote process for forking child processes. Instead, child processes will be forked and
@@ -59,19 +65,20 @@ public class ApplicationManager {
         chromeOptions.addArguments("window-size=1920,1080");
 
         driver = new ChromeDriver(chromeOptions);
+        driver.manage().timeouts().pageLoadTimeout(SECONDS20, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(IMPLICIT_WAIT, TimeUnit.SECONDS);
 
-        driver.get("https://www.google.com/");
-
-        if (driver.getPageSource().contains("I'm Feeling Lucky")) {
-            reportLog("Pass");
-        } else {
-            reportLog("Fail");
-        }
-        
-        reportLog(OS.toLowerCase());
-
-        reportLog(driver.getTitle());
-
+        long start = System.currentTimeMillis();
+        driver.get(Parameters.instance().getUrl()); //Opening the Salesforce site
+        long finish = System.currentTimeMillis();
+        long totalTimeInMillis = finish - start;
+        double seconds = (totalTimeInMillis / 1000.0) % 60;
+        double minutes = (double) ((totalTimeInMillis / (1000 * 60)) % 60);
+        reportLog("Total time to load the page -> " + "milliseconds: " + totalTimeInMillis + " minutes:" + minutes + " seconds:" + seconds); //Counting time to open the page
+        selectorService = new SelectorService(driver);
+        mainPages = new MainPages(driver);
+        leadsPage = new LeadsPage(driver);
+        new SessionHelper(driver).login_To_Website();
     }
 
     @AfterTest
@@ -89,4 +96,10 @@ public class ApplicationManager {
             Reporter.log(dateFormat.format(date) + " /" + " " + message);
         }
     }
+
+    public SelectorService getSelectorService(){ return selectorService; }
+
+    public MainPages goTo() { return mainPages; }
+
+    public LeadsPage getLeadsPage() { return leadsPage; }
 }

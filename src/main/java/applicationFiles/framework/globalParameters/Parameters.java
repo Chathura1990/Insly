@@ -1,4 +1,4 @@
-package applicationFiles.framework.mainClass;
+package applicationFiles.framework.globalParameters;
 
 import com.beust.jcommander.Parameter;
 
@@ -18,6 +18,9 @@ public class Parameters {
     @Parameter(names = {"--chromeWin", "-w"}, description = "Path to Google Chrome Driver")
     private String chromeDriverWin = "./src/main/resources/driver/chromedriver.exe";
 
+    @Parameter(names = {"--url", "-u"}, description = "URL")
+    private String url = GlobalParameters.WEBSITE_URL;
+
     @Parameter(names = "--help", help = true, description = "How to use")
     private boolean help;
 
@@ -29,6 +32,10 @@ public class Parameters {
             instance = new Parameters();
         }
         return instance;
+    }
+
+    public String getUrl() {
+        return url;
     }
 
     public String getChromeDriverWin() {
