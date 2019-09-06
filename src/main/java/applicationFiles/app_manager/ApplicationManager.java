@@ -6,11 +6,13 @@ import applicationFiles.app_manager.selectorHelper.SelectorService;
 import applicationFiles.app_manager.testBase.SessionHelper;
 import applicationFiles.framework.globalParameters.Parameters;
 import org.apache.log4j.Logger;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Reporter;
 import org.testng.annotations.AfterTest;
+import org.testng.annotations.Test;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -19,6 +21,7 @@ import java.util.concurrent.TimeUnit;
 
 import static applicationFiles.framework.globalParameters.GlobalParameters.*;
 import static java.lang.Thread.sleep;
+import static org.openqa.selenium.By.id;
 
 public class ApplicationManager {
 
@@ -28,10 +31,11 @@ public class ApplicationManager {
     private String OS = System.getProperty("os.name").toLowerCase();
     public static Logger log = Logger.getLogger(ApplicationManager.class.getName());
 
-    private SelectorService selectorService;
-    private MainPages mainPages;
-    private LeadsPage leadsPage;
+    private By UserName = id("username");
+    private By Password = id("password");
+    private By SubmitButton = id("Login");
 
+    @Test
     public void init() {
         /*
          * open browser (GoogleChrome) and enter user credentials
@@ -75,10 +79,11 @@ public class ApplicationManager {
         double seconds = (totalTimeInMillis / 1000.0) % 60;
         double minutes = (double) ((totalTimeInMillis / (1000 * 60)) % 60);
         reportLog("Total time to load the page -> " + "milliseconds: " + totalTimeInMillis + " minutes:" + minutes + " seconds:" + seconds); //Counting time to open the page
-        selectorService = new SelectorService(driver);
-        mainPages = new MainPages(driver);
-        leadsPage = new LeadsPage(driver);
         new SessionHelper(driver).login_To_Website();
+        driver.findElement(UserName).sendKeys(VALID_USERNAME);
+        driver.findElement(Password).sendKeys(VALID_PASSWORD);
+        driver.findElement(SubmitButton).click();
+        driver.get(Parameters.instance().getUrl() + "/lightning/o/Lead/list?filterName=Recent");
     }
 
     @AfterTest
@@ -96,10 +101,4 @@ public class ApplicationManager {
             Reporter.log(dateFormat.format(date) + " /" + " " + message);
         }
     }
-
-    public SelectorService getSelectorService(){ return selectorService; }
-
-    public MainPages goTo() { return mainPages; }
-
-    public LeadsPage getLeadsPage() { return leadsPage; }
 }
