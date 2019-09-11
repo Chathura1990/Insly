@@ -31,10 +31,6 @@ public class ApplicationManager {
     private String OS = System.getProperty("os.name").toLowerCase();
     public static Logger log = Logger.getLogger(ApplicationManager.class.getName());
 
-    private By UserName = id("username");
-    private By Password = id("password");
-    private By SubmitButton = id("Login");
-
     @Test
     public void init() {
         /*
@@ -79,11 +75,6 @@ public class ApplicationManager {
         double seconds = (totalTimeInMillis / 1000.0) % 60;
         double minutes = (double) ((totalTimeInMillis / (1000 * 60)) % 60);
         reportLog("Total time to load the page -> " + "milliseconds: " + totalTimeInMillis + " minutes:" + minutes + " seconds:" + seconds); //Counting time to open the page
-        new SessionHelper(driver).login_To_Website();
-        driver.findElement(UserName).sendKeys(VALID_USERNAME);
-        driver.findElement(Password).sendKeys(VALID_PASSWORD);
-        driver.findElement(SubmitButton).click();
-        driver.get(Parameters.instance().getUrl() + "/lightning/o/Lead/list?filterName=Recent");
     }
 
     @AfterTest

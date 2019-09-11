@@ -16,10 +16,6 @@ public class SessionHelper extends SelectorService {
     private By Password = id("password");
     private By SubmitButton = id("Login");
 
-//    private By UserName = xpath("//input[@id='username']");
-//    private By Password = xpath("//input[@id='password']");
-//    private By SubmitButton = xpath("//input[@id='Login']");
-
     public SessionHelper(WebDriver driver) {
         super(driver);
     }
